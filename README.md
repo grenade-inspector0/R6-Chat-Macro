@@ -4,7 +4,7 @@ This is a macro to boost your positive units within Tom Clancy's Rainbow Six Sie
 # How does it work?
 It works by randomly selecting 3 positive messages from a list of 35 messages, then types those messages in-game. All you need to do is set your hotkey within the config file (It's generated at the first startup; F2 by default), then tab into the game and press your selected hotkey.
 
-<video controls src="2025-03-12 18-23-39.mp4" title="Title"></video>
+<video controls src="./assets/Macro_Showcase.mp4" title="Title"></video>
 
 # FAQ
 - Will this get me banned?
