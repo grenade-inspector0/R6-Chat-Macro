@@ -1,4 +1,4 @@
-# R6 ReputationFarmer
+# R6 Reputation Farmer
 This is a macro to boost your positive units within Tom Clancy's Rainbow Six Siege. You can either compile it from the python source code or use the pre-compiled exe. 
 
 # How does it work?
