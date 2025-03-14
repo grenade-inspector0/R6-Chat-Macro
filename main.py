@@ -15,7 +15,7 @@ def clean_exit(exit_reason):
     os.system("cls")
     input(f"{exit_reason}\n\nPress Enter to exit...")
     os.system("cls")
-    exit()
+    sys.exit()
 
 def get_config():
     if not os.path.exists("./config.json"):
@@ -76,7 +76,18 @@ def send_messages():
         time.sleep(random.uniform(0.1, 0.5))
 
 print(f"v{VERSION}")
-keyboard.add_hotkey(hotkey=get_config()["Hotkey"], callback=send_messages, suppress=True)
+
+response = None
+last_hotkey = get_config()["Hotkey"]
+response = keyboard.add_hotkey(hotkey=get_config()["Hotkey"], callback=send_messages, suppress=True)
+
+while True:
+    if last_hotkey != get_config()["Hotkey"]:
+        keyboard.remove_hotkey(response)
+        last_hotkey = get_config()["Hotkey"]
+        response = keyboard.add_hotkey(hotkey=get_config()["Hotkey"], callback=send_messages, suppress=True)
+    time.sleep(3)
+
 ctypes.windll.kernel32.SetConsoleTitleW(f"R6 Reputation Farmer v{VERSION}")
 print(f"Ready")
 
