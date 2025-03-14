@@ -6,7 +6,7 @@ import shutil
 import pathlib
 import PyInstaller.__main__ as pyinstaller
 
-EXE_NAME = "R6_Rep_Farmer"
+EXE_NAME = "R6_Chat_Macro"
 ROOT_DIR = pathlib.Path(__file__).parent.resolve()
 
 def compile_main(name, source):

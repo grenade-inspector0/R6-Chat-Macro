@@ -8,20 +8,14 @@ import string
 import keyboard
 from pynput.keyboard import Key, Controller
 
-VERSION = 2.0
+VERSION = 3.0
 pynput_Keyboard = Controller()
-
-if getattr(sys, 'frozen', False):
-    file_path = os.path.join(sys._MEIPASS, 'assets', 'config.json')
-else:
-    file_path = os.path.join(os.path.dirname(__file__), 'assets', 'config.json')
-default_config = json.load(open(file_path, "r"))
 
 def clean_exit(exit_reason):
     os.system("cls")
     input(f"{exit_reason}\n\nPress Enter to exit...")
     os.system("cls")
-    sys.exit()
+    os._exit(0)
 
 def create_config(exit_reason="Config not found. Generating new config file... Config file successfully generated!"):
     with open("./config.json", "w") as f:
@@ -93,24 +87,24 @@ def send_messages():
         type_message(message)
         time.sleep(random.uniform(0.1, 0.5))
 
+if getattr(sys, 'frozen', False):
+    file_path = os.path.join(sys._MEIPASS, 'assets', 'config.json')
+else:
+    file_path = os.path.join(os.path.dirname(__file__), 'assets', 'config.json')
+default_config = json.load(open(file_path, "r"))
+
+os.system("cls")
 ctypes.windll.kernel32.SetConsoleTitleW(f"R6 Reputation Farmer v{VERSION}")
 print(f"v{VERSION}")
-print(f"Ready\n\nPress your exit hotkey if you wish to exit.")
+print(f"Ready\n\nIf you wish to exit, simply close the window.")
 
-response = None
-last_hotkeys = [get_config()["Hotkey"], get_config()["Exit_Hotkey"]]
 last_hotkey = get_config()["Hotkey"]
-responses = [keyboard.add_hotkey(hotkey=last_hotkeys[0], callback=send_messages, suppress=True),
-             keyboard.add_hotkey(hotkey=last_hotkeys[1], callback=clean_exit, args=("Thanks for using the R6 Chat Macro.", ), suppress=True)]
+response = keyboard.add_hotkey(hotkey=last_hotkey, callback=send_messages, suppress=True)
 
 while True:
-    # Every 3 seconds check if the user has changed the hotkeys they wish to use
-    if last_hotkeys[0] != get_config()["Hotkey"]: 
-        keyboard.remove_hotkey(responses[0]) # If they have, remove their old hotkey
-        responses[0] = keyboard.add_hotkey(hotkey=get_config()["Hotkey"], callback=send_messages, suppress=True) # Change the hotkey to the new one
-        last_hotkeys[0] = get_config()["Hotkey"] # Set the new hotkey as the last used hotkey
-    if last_hotkeys[1] != get_config()["Exit_Hotkey"]: 
-        keyboard.remove_hotkey(responses[1]) # If they have, remove their old hotkey
-        responses[1] = keyboard.add_hotkey(hotkey=get_config()["Exit_Hotkey"], callback=clean_exit, args=("Thanks for using the R6 Chat Macro.", ), suppress=True) # Change the exit hotkey to the new one
-        last_hotkeys[1] = get_config()["Exit_Hotkey"] # Set the new hotkey as the last used hotkey
+    # Every 3 seconds check if the user has changed the hotkey they wish to use
+    if last_hotkey != get_config()["Hotkey"]: 
+        keyboard.remove_hotkey(response) # If they have, remove their old hotkey
+        response = keyboard.add_hotkey(hotkey=get_config()["Hotkey"], callback=send_messages, suppress=True) # Change the hotkey to the new one
+        last_hotkey = get_config()["Hotkey"] # Set the new hotkey as the last used hotkey
     time.sleep(3)
