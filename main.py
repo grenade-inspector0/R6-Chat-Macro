@@ -94,7 +94,7 @@ else:
 default_config = json.load(open(file_path, "r"))
 
 os.system("cls")
-ctypes.windll.kernel32.SetConsoleTitleW(f"R6 Reputation Farmer v{VERSION}")
+ctypes.windll.kernel32.SetConsoleTitleW(f"R6 Chat Macro v{VERSION}")
 print(f"v{VERSION}")
 print(f"Ready\n\nIf you wish to exit, simply close the window.")
 
