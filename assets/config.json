@@ -1,11 +1,16 @@
 {
     "Hotkey": "f2",
+    "Exit_Hotkey": "f3",
     "All_Chat_Key": "t",
     "Messages": {
         "use_custom_messages": false,
         "custom_messages": ["message_1",
                             "message_2",
                             "message_3"             
-        ]
+        ],
+        "Youtube_Link_Typer": {
+            "enabled": false,
+            "yt_channel_name": "grenadeinspector"
+        }
     }
 }
