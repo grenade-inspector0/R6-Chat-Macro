@@ -76,6 +76,7 @@ def send_messages():
         time.sleep(random.uniform(0.1, 0.5))
 
 print(f"v{VERSION}")
+print(f"Ready")
 
 response = None
 last_hotkey = get_config()["Hotkey"]
@@ -89,6 +90,4 @@ while True:
     time.sleep(3)
 
 ctypes.windll.kernel32.SetConsoleTitleW(f"R6 Reputation Farmer v{VERSION}")
-print(f"Ready")
-
 keyboard.wait()
