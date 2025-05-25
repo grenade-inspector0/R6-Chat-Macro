@@ -15,7 +15,6 @@ def compile_main(name, source):
         '--onefile',
         '--console',
         '--clean',
-        '--add-data=assets/messages.txt;assets',
         '--add-data=assets/config.json;assets',
         str(source),
     ])

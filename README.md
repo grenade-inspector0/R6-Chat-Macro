@@ -16,5 +16,5 @@ https://github.com/user-attachments/assets/c271ffa5-fa50-4d45-80f4-04c884320c43
 # FAQ
 - Will this get me banned?
   - No, as long as you're not spamming the chat, then you'll be fine.
-- How often should I use the macro per game?
-   - You should type at least 3 positive messages every game in order to get the maximum amount of positive units to boost your reputation (Once per game).
+- How often should I use the macro?
+  - In order to get the most positive units per match for messages you need at least 3 positive messages. So, I'd recommend you press the macro at least once per game.
